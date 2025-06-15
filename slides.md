@@ -492,52 +492,240 @@ graph TD
 
 ---
 
-# Coding Agent 产品对比
+# Coding Agent 产品推荐
 
-## 市场主要产品分析
+## 市场主要产品分析与推荐
 
-<div class="mt-8">
+<div class="grid grid-cols-3 gap-6 mt-8">
 
-<div class="grid grid-cols-2 gap-8">
+<!-- 首选推荐 -->
+<div class="relative p-6 border-3 border-green-500 rounded-lg bg-green-50 cursor-pointer hover:shadow-lg transition-shadow" onclick="showProductDetail('cursor')">
+  <div class="absolute -top-3 left-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-bold">
+    ⭐ 首选推荐
+  </div>
+  <div class="text-center mt-2">
+    <h3 class="text-xl font-bold text-green-700">Cursor</h3>
+    <p class="text-sm text-gray-600 mb-4">AI 原生代码编辑器</p>
+    <div class="text-left space-y-2 text-sm">
+      <div class="flex items-center">
+        <span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+        完整 AI 集成体验
+      </div>
+      <div class="flex items-center">
+        <span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+        独立编辑器，功能强大
+      </div>
+      <div class="flex items-center">
+        <span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+        Agent 模式最成熟
+      </div>
+      <div class="flex items-center">
+        <span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+        多文件问答与重构
+      </div>
+    </div>
+    <div class="mt-4 p-2 bg-green-100 rounded text-xs">
+      <strong>适合场景：</strong><br>
+      新项目开发、大型重构、学习AI编程
+    </div>
+  </div>
+</div>
 
-<div>
+<!-- 平替推荐 -->
+<div class="relative p-6 border-2 border-blue-400 rounded-lg bg-blue-50 cursor-pointer hover:shadow-lg transition-shadow" onclick="showProductDetail('trae')">
+  <div class="absolute -top-3 left-4 bg-blue-400 text-white px-3 py-1 rounded-full text-sm font-bold">
+    🔄 平替选择
+  </div>
+  <div class="text-center mt-2">
+    <h3 class="text-xl font-bold text-blue-700">Trae</h3>
+    <p class="text-sm text-gray-600 mb-4">阶梯智能 AI 软件工程师</p>
+    <div class="text-left space-y-2 text-sm">
+      <div class="flex items-center">
+        <span class="w-2 h-2 bg-blue-400 rounded-full mr-2"></span>
+        自主理解需求
+      </div>
+      <div class="flex items-center">
+        <span class="w-2 h-2 bg-blue-400 rounded-full mr-2"></span>
+        任务自动拆解
+      </div>
+      <div class="flex items-center">
+        <span class="w-2 h-2 bg-blue-400 rounded-full mr-2"></span>
+        多文件代码生成
+      </div>
+      <div class="flex items-center">
+        <span class="w-2 h-2 bg-blue-400 rounded-full mr-2"></span>
+        自我修正能力
+      </div>
+    </div>
+    <div class="mt-4 p-2 bg-blue-100 rounded text-xs">
+      <strong>适合场景：</strong><br>
+      企业级开发、复杂项目规划
+    </div>
+  </div>
+</div>
 
-### 🔥 主流产品
-- **Cursor** - AI 原生编辑器
-- **GitHub Copilot** - 微软的 AI 编程助手
-- **Devin** - 全自主 AI 软件工程师
-- **Cline** - 开源的 Coding Agent
+<!-- IDE集成推荐 -->
+<div class="relative p-6 border-2 border-purple-400 rounded-lg bg-purple-50 cursor-pointer hover:shadow-lg transition-shadow" onclick="showProductDetail('codebuddy')">
+  <div class="absolute -top-3 left-4 bg-purple-400 text-white px-3 py-1 rounded-full text-sm font-bold">
+    🔧 IDE集成
+  </div>
+  <div class="text-center mt-2">
+    <h3 class="text-xl font-bold text-purple-700">CodeBuddy</h3>
+    <p class="text-sm text-gray-600 mb-4">腾讯云 AI 编码助手</p>
+    <div class="text-left space-y-2 text-sm">
+      <div class="flex items-center">
+        <span class="w-2 h-2 bg-purple-400 rounded-full mr-2"></span>
+        原生IDE集成
+      </div>
+      <div class="flex items-center">
+        <span class="w-2 h-2 bg-purple-400 rounded-full mr-2"></span>
+        智能代码补全
+      </div>
+      <div class="flex items-center">
+        <span class="w-2 h-2 bg-purple-400 rounded-full mr-2"></span>
+        团队知识库
+      </div>
+      <div class="flex items-center">
+        <span class="w-2 h-2 bg-purple-400 rounded-full mr-2"></span>
+        调试辅助功能
+      </div>
+    </div>
+    <div class="mt-4 p-2 bg-purple-100 rounded text-xs">
+      <strong>适合场景：</strong><br>
+      现有IDE用户、团队协作开发
+    </div>
+  </div>
+</div>
 
 </div>
 
-<div>
-
-### 📊 对比维度
-- **功能完整性**
-- **易用性**
-- **性能表现**
-- **生态集成**
-- **成本效益**
-
+<!-- 产品详情提示框 -->
+<div id="product-detail" class="mt-6 p-4 border rounded-lg hidden">
+  <div id="detail-content"></div>
 </div>
+
+<script>
+function showProductDetail(product) {
+  const detailDiv = document.getElementById('product-detail');
+  const contentDiv = document.getElementById('detail-content');
+  
+  const details = {
+    cursor: {
+      title: '🌟 Cursor - 首选推荐',
+      content: `
+        <div class="text-green-700">
+          <h4 class="font-bold mb-2">为什么选择 Cursor？</h4>
+          <ul class="list-disc list-inside space-y-1 text-sm">
+            <li>完全为 AI 编程设计的编辑器，体验最佳</li>
+            <li>Agent 模式功能完整，支持复杂任务自动化</li>
+            <li>上手简单，学习曲线平缓</li>
+            <li>活跃的社区和频繁的功能更新</li>
+            <li>支持多种 AI 模型，可灵活切换</li>
+          </ul>
+          <div class="mt-3 p-2 bg-green-100 rounded text-xs">
+            <strong>建议用户：</strong>个人开发者、技术爱好者、希望体验最新 AI 编程技术的用户
+          </div>
+        </div>
+      `
+    },
+    trae: {
+      title: '🔄 Trae - 平替选择',
+      content: `
+        <div class="text-blue-700">
+          <h4 class="font-bold mb-2">Trae 的独特优势</h4>
+          <ul class="list-disc list-inside space-y-1 text-sm">
+            <li>国产化方案，更好的本土化支持</li>
+            <li>专注于企业级复杂项目处理</li>
+            <li>强大的需求理解和任务拆解能力</li>
+            <li>适合大型团队协作开发</li>
+            <li>可定制化程度高，满足企业特殊需求</li>
+          </ul>
+          <div class="mt-3 p-2 bg-blue-100 rounded text-xs">
+            <strong>建议用户：</strong>企业团队、大型项目、需要定制化开发流程的组织
+          </div>
+        </div>
+      `
+    },
+    codebuddy: {
+      title: '🔧 CodeBuddy - IDE集成推荐',
+      content: `
+        <div class="text-purple-700">
+          <h4 class="font-bold mb-2">CodeBuddy 的集成优势</h4>
+          <ul class="list-disc list-inside space-y-1 text-sm">
+            <li>无缝集成现有 IDE 工作流，无需改变习惯</li>
+            <li>腾讯云技术栈，稳定性和安全性有保障</li>
+            <li>团队知识库功能，提升协作效率</li>
+            <li>中文优化，适合国内开发团队</li>
+            <li>企业级支持服务，技术保障完善</li>
+          </ul>
+          <div class="mt-3 p-2 bg-purple-100 rounded text-xs">
+            <strong>建议用户：</strong>VS Code/JetBrains 用户、企业开发团队、注重稳定性的项目
+          </div>
+        </div>
+      `
+    }
+  };
+  
+  contentDiv.innerHTML = details[product].content;
+  detailDiv.className = 'mt-6 p-4 border rounded-lg bg-gray-50';
+  
+  // 添加关闭按钮
+  const closeBtn = document.createElement('button');
+  closeBtn.innerHTML = '✕';
+  closeBtn.className = 'float-right text-gray-500 hover:text-gray-700';
+  closeBtn.onclick = () => {
+    detailDiv.className = 'mt-6 p-4 border rounded-lg hidden';
+  };
+  contentDiv.appendChild(closeBtn);
+}
+</script>
+
+---
+
+# 产品对比详细表格
+
+<div class="overflow-x-auto mt-6">
+
+| **产品** | **公司** | **定位** | **核心优势** | **适用场景** | **平台支持** |
+|---------|---------|---------|-------------|-------------|-------------|
+| **Cursor** 🌟 | Cursor | AI原生编辑器 | 完整AI体验、Agent模式成熟 | 新项目、大型重构 | 独立编辑器 |
+| **Trae** 🔄 | 阶梯智能 | AI软件工程师 | 自主规划、任务拆解 | 企业开发、复杂项目 | 平台级产品 |
+| **CodeBuddy** 🔧 | 腾讯云 | AI编码助手 | IDE集成、团队协作 | 现有工作流集成 | VS Code、JetBrains |
+| Windsurf | Codeium | AI编码平台 | 代码库上下文感知 | 大型代码库 | 多IDE支持 |
+| 通义灵码 | 阿里云 | AI编码助手 | 中文优化、企业服务 | 国内企业项目 | VS Code、JetBrains |
+| Cline | 开源社区 | AI软件工程师 | 开源免费、可定制 | 学习研究、小型项目 | VS Code |
 
 </div>
 
 <v-click>
 
-<div class="mt-8 p-4 bg-yellow-50 rounded-lg">
+<div class="mt-8 grid grid-cols-2 gap-8">
 
-### 💡 选择建议
-- **初学者**：推荐 Cursor，上手简单，功能完整
-- **团队协作**：GitHub Copilot 生态集成好
-- **深度定制**：考虑开源方案如 Cline
-- **全自动开发**：Devin 适合复杂项目
+<div class="p-4 bg-green-50 rounded-lg">
+
+### 🎯 推荐策略
+
+- **个人开发者**：首选 **Cursor**，体验最佳
+- **企业团队**：考虑 **Trae** 或 **CodeBuddy**
+- **现有IDE用户**：**CodeBuddy** 集成度高
+- **预算有限**：**Cline** 开源免费
+
+</div>
+
+<div class="p-4 bg-blue-50 rounded-lg">
+
+### 📊 选择要点
+
+- **上手难度**：Cursor < CodeBuddy < Trae < Cline
+- **功能完整性**：Cursor > Trae > CodeBuddy > Cline
+- **企业服务**：Trae > CodeBuddy > Cursor > Cline
+- **成本效益**：Cline > CodeBuddy > Cursor > Trae
+
+</div>
 
 </div>
 
 </v-click>
-
-</div>
 
 ---
 
