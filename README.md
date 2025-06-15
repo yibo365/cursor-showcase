@@ -1,105 +1,95 @@
-# Cursor AI 编程助手演示
+# AI Coding Agent 完整分享
 
-这是一个使用 [Slidev](https://sli.dev) 创建的演示文稿，用于展示 Cursor AI 编程助手的强大功能。
+> 基于 Slidev 构建的 AI 编程助手演示文稿
 
-## 🚀 快速开始
+## 🚀 项目简介
 
-### 安装依赖
-```bash
-pnpm install
-```
-
-### 启动开发服务器
-```bash
-pnpm dev
-```
-
-浏览器会自动打开 `http://localhost:3030`，你就可以看到演示文稿了。
-
-### 导出 PDF
-```bash
-pnpm export
-```
-
-## 📋 演示内容
-
-这个演示文稿包含以下主要内容：
-
-1. **Cursor 简介** - 什么是 Cursor，为什么选择它
-2. **核心功能演示**：
-   - Tab 智能补全
-   - Cmd+K 快速编辑
-   - Cmd+L 对话编程
-3. **实战演示**：
-   - 从零创建 React 组件
-   - 调试和修复错误
-   - 代码重构和优化
-   - AI 辅助学习新技术
-4. **最佳实践** - 如何最大化 Cursor 的效能
-5. **团队协作** - 在团队中推广 Cursor
-6. **未来展望** - AI 编程的发展趋势
-
-## 🎯 演示技巧
-
-### 键盘快捷键
-- `空格键` 或 `→` - 下一页/下一个动画
-- `←` - 上一页/上一个动画
-- `f` - 全屏模式
-- `o` - 演示者模式
-- `d` - 深色模式切换
-
-### 演示者模式
-按 `o` 键进入演示者模式，可以看到：
-- 当前幻灯片和下一张幻灯片的预览
-- 演示者备注
-- 计时器
-- 幻灯片导航
+这是一个完整的 AI Coding Agent 分享演示，涵盖了从 Chat 到 Agent 的 AI 编程助手进化史，以及 Cursor 的深度使用指南和最佳实践。
 
 ## 📁 项目结构
 
 ```
 cursor-demo/
-├── slides.md                 # 主要的幻灯片内容
-├── cursor-architecture.mmd   # Cursor 架构图
-├── package.json              # 项目配置
-├── components/               # 自定义组件
-├── pages/                    # 额外的页面
-└── snippets/                 # 代码片段
+├── slides.md           # 主要演示文稿内容
+├── public/
+│   └── images/         # 演示图片资源
+├── vercel.json         # Vercel 部署配置
+├── package.json        # 项目依赖
+└── README.md           # 项目说明
 ```
 
-## 🛠 自定义
+## 🛠️ 本地开发
 
-### 修改内容
-编辑 `slides.md` 文件来修改幻灯片内容。Slidev 支持：
-- Markdown 语法
-- Vue 组件
-- 代码高亮
-- Mermaid 图表
-- LaTeX 数学公式
-- 动画效果
-
-### 更换主题
-在 `slides.md` 的 frontmatter 中修改 `theme` 字段：
-```yaml
----
-theme: seriph  # 或者 default, apple, etc.
----
+### 安装依赖
+```bash
+npm install
 ```
 
-### 添加自定义样式
-可以在幻灯片中使用 `<style>` 标签添加自定义 CSS。
+### 启动开发服务器
+```bash
+npm run dev
+```
 
-## 📚 相关资源
+### 构建生产版本
+```bash
+npm run build
+```
 
-- [Slidev 官方文档](https://sli.dev)
-- [Cursor 官网](https://cursor.sh)
-- [Cursor 官方文档](https://docs.cursor.sh)
-- [Mermaid 图表语法](https://mermaid.js.org)
+## 🌐 部署到 Vercel
+
+### 方法一：通过 GitHub 导入（推荐）
+
+1. 访问 [Vercel](https://vercel.com)
+2. 点击 "New Project"
+3. 导入 GitHub 仓库：`https://github.com/yibo365/cursor-showcase`
+4. 选择 `cursor-demo` 目录作为根目录
+5. Vercel 会自动检测到 `vercel.json` 配置并部署
+
+### 方法二：通过 Vercel CLI
+
+```bash
+# 安装 Vercel CLI
+npm i -g vercel
+
+# 登录 Vercel
+vercel login
+
+# 部署项目
+vercel --prod
+```
+
+## 📖 演示内容
+
+- **AI 编程进化史**：从 Chat → Copilot → Agent → Engineer 的演进
+- **Cursor 核心功能**：Tab 补全、Cmd K 编辑、Chat/Agent 模式
+- **上下文符号系统**：@ 符号的强大功能
+- **高级功能**：MCP、Beta 功能、模型选择策略
+- **最佳实践**：个人和团队的使用经验分享
+- **产品对比**：市场主要 AI 编程工具对比分析
+
+## 🎯 特色功能
+
+- ✅ 完整的 AI 编程助手知识体系
+- ✅ 实用的 Cursor 使用技巧和最佳实践
+- ✅ 丰富的产品对比和选择建议
+- ✅ 美观的 Slidev 演示界面
+- ✅ 支持一键部署到 Vercel
+
+## 📝 使用说明
+
+1. **演示导航**：使用方向键或点击进行页面切换
+2. **全屏模式**：按 `F` 键进入全屏演示
+3. **演示者模式**：按 `P` 键进入演示者模式
+4. **打印导出**：访问 `/print` 路径可打印或导出 PDF
 
 ## 🤝 贡献
 
-欢迎提交 Issue 和 Pull Request 来改进这个演示项目！
+欢迎提交 Issue 和 Pull Request 来改进这个演示！
 
-## �� 许可证
+## 📄 许可证
 
 MIT License
+
+---
+
+**Made with ❤️ using Slidev**
