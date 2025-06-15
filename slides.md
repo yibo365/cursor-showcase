@@ -48,9 +48,7 @@ mdc: true
 transition: fade-out
 ---
 
-# AI Coding 进化史
-
-AI 编程助手的四个阶段演进
+# AI Coding 进化史 ： 四个阶段演进
 
 <div class="overflow-x-auto mt-8">
 
@@ -72,7 +70,7 @@ AI 编程助手的四个阶段演进
 
 <div class="mt-6 p-4 bg-blue-50 rounded-lg">
 
-### 🎯 现状
+### 🕐 现状
 目前基本上大部分人都开始使用 **Copilot 模式**来开发。  
 相当一部分人开始使用 **Agent 模式**来开发。  
 现在流行的 **Vibe Coding**，也是借助于 Code Agent 的能力才能达到。
@@ -447,7 +445,7 @@ AI Agent 通过预先配置好的 MCP 工具：
 
 # AgenticWorkflows背后原理
 
-<div class="grid grid-cols-[7fr_3fr] gap-8 mt-6">
+<div class="grid grid-cols-[5fr_5fr] gap-8 mt-2">
 
 <div>
 
@@ -457,7 +455,7 @@ Cursor 的各种设置，其实都是在控制 Agent 的 **Tools** 和 **Memory*
 
 </div>
 
-<div class="text-center mt-0" style="transform: scale(0.8);">
+<div class="text-center mt-0" style="transform: scale(0.7);">
 
 ```mermaid
 graph TD
@@ -598,93 +596,11 @@ graph TD
 </div>
 
 </div>
-
-<!-- 产品详情提示框 -->
-<div id="product-detail" class="mt-6 p-4 border rounded-lg hidden">
-  <div id="detail-content"></div>
-</div>
-
-<script>
-function showProductDetail(product) {
-  const detailDiv = document.getElementById('product-detail');
-  const contentDiv = document.getElementById('detail-content');
-  
-  const details = {
-    cursor: {
-      title: '🌟 Cursor - 首选推荐',
-      content: `
-        <div class="text-green-700">
-          <h4 class="font-bold mb-2">为什么选择 Cursor？</h4>
-          <ul class="list-disc list-inside space-y-1 text-sm">
-            <li>完全为 AI 编程设计的编辑器，体验最佳</li>
-            <li>Agent 模式功能完整，支持复杂任务自动化</li>
-            <li>上手简单，学习曲线平缓</li>
-            <li>活跃的社区和频繁的功能更新</li>
-            <li>支持多种 AI 模型，可灵活切换</li>
-          </ul>
-          <div class="mt-3 p-2 bg-green-100 rounded text-xs">
-            <strong>建议用户：</strong>个人开发者、技术爱好者、希望体验最新 AI 编程技术的用户
-          </div>
-        </div>
-      `
-    },
-    trae: {
-      title: '🔄 Trae - 平替选择',
-      content: `
-        <div class="text-blue-700">
-          <h4 class="font-bold mb-2">Trae 的独特优势</h4>
-          <ul class="list-disc list-inside space-y-1 text-sm">
-            <li>国产化方案，更好的本土化支持</li>
-            <li>专注于企业级复杂项目处理</li>
-            <li>强大的需求理解和任务拆解能力</li>
-            <li>适合大型团队协作开发</li>
-            <li>可定制化程度高，满足企业特殊需求</li>
-          </ul>
-          <div class="mt-3 p-2 bg-blue-100 rounded text-xs">
-            <strong>建议用户：</strong>企业团队、大型项目、需要定制化开发流程的组织
-          </div>
-        </div>
-      `
-    },
-    codebuddy: {
-      title: '🔧 CodeBuddy - IDE集成推荐',
-      content: `
-        <div class="text-purple-700">
-          <h4 class="font-bold mb-2">CodeBuddy 的集成优势</h4>
-          <ul class="list-disc list-inside space-y-1 text-sm">
-            <li>无缝集成现有 IDE 工作流，无需改变习惯</li>
-            <li>腾讯云技术栈，稳定性和安全性有保障</li>
-            <li>团队知识库功能，提升协作效率</li>
-            <li>中文优化，适合国内开发团队</li>
-            <li>企业级支持服务，技术保障完善</li>
-          </ul>
-          <div class="mt-3 p-2 bg-purple-100 rounded text-xs">
-            <strong>建议用户：</strong>VS Code/JetBrains 用户、企业开发团队、注重稳定性的项目
-          </div>
-        </div>
-      `
-    }
-  };
-  
-  contentDiv.innerHTML = details[product].content;
-  detailDiv.className = 'mt-6 p-4 border rounded-lg bg-gray-50';
-  
-  // 添加关闭按钮
-  const closeBtn = document.createElement('button');
-  closeBtn.innerHTML = '✕';
-  closeBtn.className = 'float-right text-gray-500 hover:text-gray-700';
-  closeBtn.onclick = () => {
-    detailDiv.className = 'mt-6 p-4 border rounded-lg hidden';
-  };
-  contentDiv.appendChild(closeBtn);
-}
-</script>
-
 ---
 
-# 产品对比详细表格
+## 产品对比详细表格
 
-<div class="overflow-x-auto mt-6">
+<div class="overflow-x-auto mt-2">
 
 | **产品** | **公司** | **定位** | **核心优势** | **适用场景** | **平台支持** |
 |---------|---------|---------|-------------|-------------|-------------|
@@ -696,36 +612,6 @@ function showProductDetail(product) {
 | Cline | 开源社区 | AI软件工程师 | 开源免费、可定制 | 学习研究、小型项目 | VS Code |
 
 </div>
-
-<v-click>
-
-<div class="mt-8 grid grid-cols-2 gap-8">
-
-<div class="p-4 bg-green-50 rounded-lg">
-
-### 🎯 推荐策略
-
-- **个人开发者**：首选 **Cursor**，体验最佳
-- **企业团队**：考虑 **Trae** 或 **CodeBuddy**
-- **现有IDE用户**：**CodeBuddy** 集成度高
-- **预算有限**：**Cline** 开源免费
-
-</div>
-
-<div class="p-4 bg-blue-50 rounded-lg">
-
-### 📊 选择要点
-
-- **上手难度**：Cursor < CodeBuddy < Trae < Cline
-- **功能完整性**：Cursor > Trae > CodeBuddy > Cline
-- **企业服务**：Trae > CodeBuddy > Cursor > Cline
-- **成本效益**：Cline > CodeBuddy > Cursor > Trae
-
-</div>
-
-</div>
-
-</v-click>
 
 ---
 
@@ -768,36 +654,6 @@ function showProductDetail(product) {
 </div>
 
 </div>
-
----
-
-# 未来展望
-
-## AI 编程助手的发展趋势
-
-<v-clicks>
-
-### 🧠 技术发展方向
-- **更强大的模型**：GPT-5、Claude 下一代等新模型
-- **更好的推理能力**：复杂问题的分解和解决
-- **多模态集成**：代码、图像、声音的综合处理
-
-### 🔗 生态系统完善
-- **工具集成**：与更多开发工具的深度集成
-- **平台互操作**：跨平台、跨语言的无缝协作
-- **企业级功能**：更好的安全性和隐私保护
-
-### 🚀 应用场景扩展
-- **全栈开发**：从前端到后端的全面覆盂
-- **DevOps 自动化**：部署、监控、维护的自动化
-- **架构设计**：系统级设计和优化建议
-
-### 👥 协作模式进化
-- **人机协作**：更自然的人机交互方式
-- **团队协作**：AI 辅助的团队开发模式
-- **知识共享**：基于 AI 的知识管理和传承
-
-</v-clicks>
 
 ---
 
