@@ -5,12 +5,13 @@ theme: seriph
 # like them? see https://unsplash.com/collections/94734566/slidev
 background: https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80
 # some information about your slides (markdown enabled)
-title: Cursor AI 编程助手演示
+title: AI Coding Agent 完整分享
 info: |
-  ## Cursor AI 编程助手完整演示
-  
-  展示如何使用 Cursor 提升开发效率
-  
+  ## AI Coding Agent 完整分享
+
+  从 Chat 到 Agent：AI 编程助手的进化史
+  深度解析 Cursor 使用技巧与最佳实践
+
   演示者：Eric
 # apply unocss classes to the current slide
 class: text-center
@@ -21,18 +22,15 @@ drawings:
 transition: slide-left
 # enable MDC Syntax: https://sli.dev/features/mdc
 mdc: true
-# open graph
-# seoMeta:
-#  ogImage: https://cover.sli.dev
 ---
 
-# Cursor AI 编程助手
+# AI Coding Agent 完整分享
 
-## 让 AI 成为你的编程伙伴
+## 从 Chat 到 Agent：编程助手的进化之路
 
 <div class="pt-12">
   <span @click="$slidev.nav.next" class="px-2 py-1 rounded cursor-pointer" hover:bg="white hover:bg-opacity-10">
-    开始演示 <carbon:arrow-right class="inline"/>
+    开始分享 <carbon:arrow-right class="inline"/>
   </span>
 </div>
 
@@ -40,598 +38,629 @@ mdc: true
   <button @click="$slidev.nav.openInEditor()" title="在编辑器中打开" class="text-xl slidev-icon-btn opacity-50 !border-none !hover:text-white">
     <carbon:edit />
   </button>
-  <a href="https://cursor.sh" target="_blank" alt="Cursor 官网" title="Cursor 官网"
+  <a href="https://cursor.com" target="_blank" alt="Cursor 官网" title="Cursor 官网"
     class="text-xl slidev-icon-btn opacity-50 !border-none !hover:text-white">
     <carbon:code />
   </a>
 </div>
 
-<!--
-The last comment block of each slide will be treated as slide notes. It will be visible and editable in Presenter Mode along with the slide. [Read more in the docs](https://sli.dev/guide/syntax.html#notes)
--->
-
 ---
 transition: fade-out
 ---
 
-# 什么是 Cursor？
+# AI Coding 进化史
 
-Cursor 是一款基于 AI 的代码编辑器，专为提升开发效率而设计
+AI 编程助手的四个阶段演进
 
+<div class="overflow-x-auto mt-8">
+
+| **维度** | **阶段 1: Chat** | **阶段 2: Copilot** | **阶段 3: Agent** | **创造者: Engineer** |
+|---------|-----------------|-------------------|------------------|-------------------|
+| **核心能力** | 理解自然语言、生成回答、提供信息 | 在特定工作流中提供实时建议与辅助操作 | 自主规划、分解任务、调用工具、达成目标 | 设计、开发、部署和维护 AI 系统及应用 |
+| **与用户关系** | 一问一答 (Turn-by-Turn) | 并肩协作 (Side-by-Side) | 授权委托 (Delegate & Forget) | 创造与被创造 |
+| **对工具调用** | 有限/不调用 | 集成调用 | 开放式调用 | 开发与集成工具 |
+| **典型例子** | ChatGPT、DeepSeek | GitHub Copilot | **Cursor**、Devin | **人类工程师** |
+
+</div>
+
+---
+
+# AI Coding 使用状况
+
+
+<v-click>
+
+<div class="mt-6 p-4 bg-blue-50 rounded-lg">
+
+### 🎯 现状
+目前基本上大部分人都开始使用 **Copilot 模式**来开发。  
+相当一部分人开始使用 **Agent 模式**来开发。  
+现在流行的 **Vibe Coding**，也是借助于 Code Agent 的能力才能达到。
+
+### 🎯 未来
+80% 的人会使用 **Agent 模式**来开发。
+人仅仅只作为一个需求提供者和检查者，负责提供任务，让 AI 自主完成。
+
+**古法手工编程** 将会越来越少
+
+</div>
+
+</v-click>
+
+---
+
+# Cursor 使用概览
+
+三种核心功能各有所长
+
+<div class="grid grid-cols-3 gap-8 mt-8">
+
+<div class="p-4 border rounded-lg">
+
+### Tab 补全
+- **使用场景**：快速手动更改
+- **优势**：完全控制，快速
+- **范围**：单文件
+
+</div>
+
+<div class="p-4 border rounded-lg">
+
+### Cmd K 编辑
+- **使用场景**：一个文件中的作用域更改
+- **优势**：专注编辑
+- **范围**：单文件
+
+</div>
+
+<div class="p-4 border rounded-lg">
+
+### Chat/Agent
+- **使用场景**：较大的、多文件的更改
+- **优势**：自动收集上下文，深度编辑
+- **范围**：上下文密集
+
+</div>
+
+</div>
+
+<v-click>
+
+<div class="mt-8 p-4 bg-green-50 rounded-lg">
+
+### 💡 建议
+一般使用默认的 **Agent 模式**即可。但是有时候不希望修改，或者希望与 AI 交流后再修改代码，可以先使用 **Ask 模式**。
+
+</div>
+
+</v-click>
+
+---
+
+# Agent/Chat AI 代理详解
+
+四种工作模式
+
+<div class="grid grid-cols-2 gap-8 mt-6">
+
+<div class="p-4 border rounded-lg">
+
+### 1. Agent Mode (代理模式)
+- 功能最强大的模式
+- AI 可以自主规划并执行一系列复杂的动作
+- 浏览文件、创建/编辑代码、运行终端命令等
+- 适用于绝大多数场景
+
+</div>
+
+<div class="p-4 border rounded-lg">
+
+### 2. Ask Mode (询问模式 - Beta)
+- "只读"模式，用于提问、探索和学习代码库
+- 通过 AI 搜索和查询来探索和学习代码库，而无需进行更改
+- 默认启用了搜索工具
+
+</div>
+
+<div class="p-4 border rounded-lg">
+
+### 3. Manual Mode (手动模式)
+- 提供更精确的控制
+- AI 不会自动浏览代码库，严格按照您提供的上下文进行操作
+- 当您明确知道要修改哪些文件时使用
+
+</div>
+
+<div class="p-4 border rounded-lg">
+
+### 4. Custom Mode (自定义模式 - Beta)
+- 创建符合特定工作流的自定义模式
+- 例如：创建"测试生成"模式，专门生成测试用例
+
+</div>
+
+</div>
+
+---
+
+# 上下文符号系统
+
+## @ 符号的强大功能
+
+<div class="grid grid-cols-2 gap-8 mt-6">
+
+<div>
+
+### 文件与代码
+- **@Files** - 引用项目中的特定文件
+- **@Folders** - 引用整个文件夹以提供更广泛的上下文
+- **@Code** - 引用代码库中的特定代码片段或符号
+- **@Definitions** - 查找符号定义（仅 Cmd K 可用）
+
+### 文档与历史
+- **@Docs** - 访问文档和指南
+- **@Git** - 访问 git 历史记录和变更
+- **@Recent Changes** - 引用最近的代码更改
+- **@Past Chats** - 处理总结的 composer 会话
+
+</div>
+
+<div>
+
+### 工具与配置
+- **@Notepads** - 访问笔记
+- **@Cursor Rules** - 处理光标规则
+- **@Web** - 引用外部网络资源和文档
+- **@Link** - 创建指向特定代码或文档的链接
+- **@Lint Errors** - 引用 lint 错误（仅 Chat 可用）
+
+### 快捷操作
+- **# 文件** - 向上下文中添加文件而不引用
+- **/ 命令** - 向上下文中添加打开和活动的文件
+
+</div>
+
+</div>
+
+---
+
+# Cursor 高级功能
+
+## 提升开发效率的关键特性
+
+<div class="grid grid-cols-2 gap-8 mt-6">
+
+<div>
+
+<div class="p-4 border rounded-lg">
+
+### 🤖 AI 生成 Commit Message
+- 自动分析代码变更（staged changes）
+- 生成总结性的 Commit Message
+- 确保提交信息的清晰性和一致性
+</div>
+
+<div class="p-4 border rounded-lg">
+
+### 📋 .cursor-rules 文件
+- 在项目根目录创建规则文件
+- 定义项目特定的 AI 行为规范
+- 使用 `/ Generate Cursor Rules` 命令快速生成
+</div>
+
+</div>
+
+<div>
+
+<div class="border border-gray-200 rounded-lg p-4 mb-4">
+
+### 🔍 自动索引
+- 自动索引工作区中的新文件
+- 保持代码库上下文为最新
+- 未创建索引时会提示创建
+</div>
+
+<div class="border border-gray-200 rounded-lg p-4">
+
+### 🚫 .cursorignore 文件
+- 类似 .gitignore，控制 AI 访问的文件
+- 让每个开发者配置单体仓库中工作的文件夹和路径
+- 建议添加到全局 .gitignore
+</div>
+
+</div>
+
+</div>
+
+---
+
+# MCP (Model Context Protocol)
+
+<div class="grid grid-cols-[7fr_3fr] gap-8 mt-6">
+
+<div>
+
+### 什么是 MCP？
+MCP 允许 Cursor 连接到外部系统和数据源，大大扩展了 AI 的能力范围。
+
+
+### 实际应用场景
+在 Cursor 中，直接向 AI Agent 发出指令：
+> **"@MySQL 查询一下 users 表中 id 为 123 的用户的注册时间和状态"**
+
+AI Agent 通过预先配置好的 MCP 工具：
+1. 直接连接到您的 MySQL 数据库
+2. 执行查询
+3. 将查询结果直接返回到聊天窗口中
+4. 基于结果继续进行代码生成或修改
+
+</div>
+
+<div class="border-l pl-8">
+
+
+### MCP 资源
+- **官方推荐**：https://docs.cursor.com/tools
+- **第三方 MCP**：可从市场或仓库获取
+- **本质**：运行在本地的服务代理
+
+</div>
+
+</div>
+
+---
+
+# Cursor Beta 实验功能
+
+<div class="grid grid-cols-2 gap-2 mt-2">
+
+<div>
+
+### 📔 Notepads 笔记本
+这是一个可以**跨聊天和代码编辑共享上下文**的强大工具。
+
+**核心功能：**
+- 创建持久化的上下文笔记
+- 记录项目架构决策
+- 存储 API 文档和规范
+- 通过 @ 符号在任何地方引用
+
+**特殊优势：**
+- **完全由人控制**的区域
+- AI 不会自动更新内容
+- 适合记录 AI 处理进度
+- 跨会话保持一致性
+
+</div>
+
+<div>
+
+### ☁️ Background Agent 云端代理
+更强大的 Agent，可以在**云端执行长时间、复杂的任务**。
+
+**应用场景：**
+- 完成一个完整的项目迁移
+- 大规模代码重构
+- 复杂的多文件同步更新
+- 长时间运行的分析任务
+
+**核心优势：**
+- **不占用本地资源**
+- **任务持续性**：即使关闭编辑器也能继续
+- **处理复杂项目**：适合大型重构工作
+- **智能任务管理**：自动规划和执行
+
+</div>
+
+</div>
+
+---
+
+# AI 模型选择策略
+
+## 如何选择合适的 AI 模型
+
+<div class="mt-8">
+
+<v-click>
+
+<div class="p-6 bg-blue-50 rounded-lg mb-6">
+
+### 🤖 **自动选择策略**
+在 Agent 模式下，Cursor 会倾向于自动为您选择最合适的模型，无需手动干预。
+
+</div>
+
+</v-click>
+
+<v-click>
+
+<div class="grid grid-cols-2 gap-8">
+
+<div>
+
+### 🔄 **手动切换建议**
+当某些模型反复修改都不正确时，可以尝试切换模型：
+
+- **Claude-4-Sonnet**：能应对大部分情况
+- **GPT-O3**：用于无法解决的复杂问题
+- **GPT-4**：平衡性能和成本的选择
+
+</div>
+
+<div>
+
+### 📊 **模型特点对比**
+- **Claude-4-Sonnet**：代码理解能力强
+- **GPT-O3**：推理能力突出
+- **GPT-4**：通用性能优秀
+- **自动选择**：根据任务特点智能匹配
+
+</div>
+
+</div>
+
+</v-click>
+
+</div>
+
+---
+
+# 个人最佳实践
+
+## 高效使用 Cursor 的核心原则
+
+<div class="grid grid-cols-2 gap-8 mt-6">
+
+<div>
+
+### 🔄 开发工作流
 <v-clicks>
 
-- 🤖 **AI 原生** - 内置 GPT-4 等先进 AI 模型
-- ⚡ **智能补全** - 上下文感知的代码建议
-- 💬 **对话编程** - 与 AI 直接对话解决问题
-- 🔧 **代码重构** - AI 辅助的代码优化和重构
-- 📝 **文档生成** - 自动生成代码注释和文档
-- 🐛 **错误修复** - 智能识别并修复代码问题
-- 🎯 **多语言支持** - 支持主流编程语言
+- **与 AI 协作**：使用 Cmd + K, Chat, Agent 等功能与 AI 协作，生成和修改代码
+- **审查与采纳**：仔细审查 Cursor 提供的 diff，采纳您认为正确的修改
+- **分步提交（Commit）**：将 AI 生成的代码按照逻辑功能点分步提交
+- **避免巨大提交**：不要将包含多个功能的修改塞进一个 Commit
+- **使用 AI Commit Message**：利用 Cursor 的 AI 生成清晰的提交信息
 
 </v-clicks>
+
+</div>
+
+<div>
+
+### 🎯 高效使用技巧
+<v-clicks>
+
+- **发挥各自优势**：使用 Chat、Cmd K & Tab 发挥它们各自的最佳优势
+- **经常创建新聊天**：每次 agent 最多执行 25 个步骤，上下文太长时可能出现问题
+- **利用历史聊天**：使用 @Past Chats 引用上一次聊天的汇总
+- **先计划后实现**：计划使用询问模式，实现使用代理模式
+
+</v-clicks>
+
+</div>
+
+</div>
+
+---
+
+# AgenticWorkflows背后原理
+
+<div class="grid grid-cols-[7fr_3fr] gap-8 mt-6">
+
+<div>
+
+Cursor 的各种设置，其实都是在控制 Agent 的 **Tools** 和 **Memory**。但是对于 **Planning** 层，还是难以窥探其方法。
+
+由于 Cursor 的代码闭源，这里使用开源的 Coding Agent：**Cline** 的代码作为参考，来探索 Coding Agent 背后的技术原理。
+
+</div>
+
+<div class="text-center mt-0" style="transform: scale(0.8);">
+
+```mermaid
+graph TD
+    A[用户输入] --> B[Planning 规划层]
+    B --> C[Memory 记忆系统]
+    B --> D[Tools 工具调用]
+    C --> E[执行动作]
+    D --> E
+    E --> F[结果反馈]
+    F --> B
+    F --> G[输出结果]
+```
+
+</div>
+
+</div>
+
+---
+
+# AgenticWorkflows背后原理
+
+<!-- 使用 onclick 事件实现图片点击放大 -->
+<div class="text-center">
+  <img 
+    src="/images/agent-workflow.png" 
+    alt="Agent Workflow" 
+    class="w-full cursor-pointer hover:opacity-80 transition-opacity" 
+    onclick="openLightbox(this)"
+  />
+  <p class="text-sm text-gray-500 mt-2">点击图片可放大查看</p>
+</div>
+
+---
+
+# Coding Agent 产品对比
+
+## 市场主要产品分析
+
+<div class="mt-8">
+
+<div class="grid grid-cols-2 gap-8">
+
+<div>
+
+### 🔥 主流产品
+- **Cursor** - AI 原生编辑器
+- **GitHub Copilot** - 微软的 AI 编程助手
+- **Devin** - 全自主 AI 软件工程师
+- **Cline** - 开源的 Coding Agent
+
+</div>
+
+<div>
+
+### 📊 对比维度
+- **功能完整性**
+- **易用性**
+- **性能表现**
+- **生态集成**
+- **成本效益**
+
+</div>
+
+</div>
+
+<v-click>
+
+<div class="mt-8 p-4 bg-yellow-50 rounded-lg">
+
+### 💡 选择建议
+- **初学者**：推荐 Cursor，上手简单，功能完整
+- **团队协作**：GitHub Copilot 生态集成好
+- **深度定制**：考虑开源方案如 Cline
+- **全自动开发**：Devin 适合复杂项目
+
+</div>
+
+</v-click>
+
+</div>
+
+---
+
+# 实际应用案例
+
+## 真实项目中的使用场景
+
+<div class="grid grid-cols-2 gap-8 mt-6">
+
+<div>
+
+### 🚀 项目启动
+- **快速搭建**：使用 Agent 模式从零创建项目结构
+- **依赖管理**：自动配置 package.json 和依赖
+- **代码规范**：通过 .cursor-rules 设置项目规范
 
 <br>
 
-<v-click>
-
-## 为什么选择 Cursor？
-
-传统编辑器 + AI 插件 ❌  
-**AI 原生编辑器** ✅
-
-</v-click>
-
----
-layout: two-cols
-layoutClass: gap-16
----
-
-# 演示大纲
-
-今天我们将展示 Cursor 的核心功能：
-
-<Toc minDepth="1" maxDepth="2" />
-
-::right::
-
-## 演示环境
-
-- **编辑器**: Cursor
-- **AI 模型**: GPT-4
-- **项目类型**: 
-  - React/TypeScript 应用
-  - Node.js 后端
-  - Python 脚本
-- **演示重点**: 
-  - 实际开发场景
-  - 效率对比
-  - 最佳实践
-
----
-
-# 核心功能 1：智能代码补全
-
-## Tab 补全 - 预测你的下一步
-
-<div class="grid grid-cols-2 gap-8 mt-8">
-
-<div>
-
-### 传统补全
-```typescript
-// 只能补全已知的方法和属性
-const user = {
-  name: 'John',
-  age: 30
-}
-user.// 只显示 name, age
-```
+### 🔧 日常开发
+- **功能实现**：通过自然语言描述快速实现功能
+- **代码重构**：大规模重构时使用 Agent 模式
+- **错误修复**：利用 @Lint Errors 快速定位问题
 
 </div>
 
 <div>
 
-### Cursor AI 补全
-```typescript {all|3-8|all}
-// 理解上下文，预测整个代码块
-const user = {
-  name: 'John',
-  age: 30
-}
-// AI 预测你想要的功能
-const greeting = `Hello, ${user.name}! You are ${user.age} years old.`
-const isAdult = user.age >= 18
-```
+### 🧪 测试与部署
+- **测试生成**：使用自定义模式专门生成测试用例
+- **文档编写**：@Docs 功能帮助维护项目文档
+- **版本管理**：AI 生成的 Commit Message 保持提交历史清晰
+
+<br>
+
+### 📈 性能优化
+- **代码审查**：利用 AI 发现潜在问题
+- **性能分析**：结合外部工具通过 MCP 进行深度分析
+- **最佳实践**：通过 @Web 获取最新的技术资讯
 
 </div>
 
 </div>
-
-<v-click>
-
-## 🎯 演示重点
-- **上下文理解**：AI 理解代码意图
-- **多行预测**：不只是单个方法，而是整个逻辑块
-- **智能建议**：基于最佳实践的代码建议
-
-</v-click>
-
----
-
-# 核心功能 2：Cmd+K 快速编辑
-
-## 自然语言描述，AI 直接实现
-
-<div class="mt-8">
-
-### 使用场景示例
-
-<v-clicks>
-
-1. **"添加错误处理"** → AI 自动添加 try-catch 块
-2. **"优化这个函数的性能"** → AI 重构代码逻辑
-3. **"添加 TypeScript 类型"** → AI 推断并添加类型定义
-4. **"重构为 React Hook"** → AI 将组件逻辑提取为自定义 Hook
-5. **"添加单元测试"** → AI 生成对应的测试用例
-
-</v-clicks>
-
-</div>
-
-<v-click>
-
-<div class="mt-8 p-4 bg-blue-50 rounded-lg">
-
-### 💡 演示技巧
-- 选中代码块后使用 `Cmd+K`
-- 用自然语言描述需求
-- AI 会在原地修改代码
-- 可以撤销和重新生成
-
-</div>
-
-</v-click>
-
----
-
-# 核心功能 3：Cmd+L 对话编程
-
-## 与 AI 结对编程
-
-<div class="grid grid-cols-2 gap-8 mt-6">
-
-<div>
-
-### 对话场景
-- 🤔 **解释代码**："这段代码是做什么的？"
-- 🐛 **调试问题**："为什么这个函数返回 undefined？"
-- 🔧 **架构建议**："如何重构这个组件？"
-- 📚 **学习新技术**："如何使用 React Query？"
-- 🎯 **代码审查**："这段代码有什么问题？"
-
-</div>
-
-<div>
-
-### 对话优势
-- **上下文感知**：AI 能看到整个项目
-- **实时交互**：即问即答
-- **代码生成**：直接插入到编辑器
-- **多轮对话**：持续深入讨论
-- **学习助手**：解释概念和最佳实践
-
-</div>
-
-</div>
-
-<v-click>
-
-<div class="mt-6 p-4 bg-green-50 rounded-lg">
-
-### 🚀 实战演示
-接下来我们将通过实际项目演示这些功能的强大之处！
-
-</div>
-
-</v-click>
-
----
-layout: center
-class: text-center
----
-
-# 实战演示
-
-## 让我们看看 Cursor 的真正威力
-
-<div class="mt-8">
-  <div class="text-6xl mb-4">🚀</div>
-  <div class="text-xl opacity-80">准备好被震撼了吗？</div>
-</div>
-
----
-
-# 演示 1：从零创建 React 组件
-
-## 场景：创建一个待办事项组件
-
-<div class="mt-6">
-
-### 演示步骤
-
-<v-clicks>
-
-1. **创建新文件** `TodoList.tsx`
-2. **使用 Tab 补全** 快速搭建组件结构
-3. **Cmd+K 添加功能**：
-   - "添加新增待办功能"
-   - "添加删除功能"
-   - "添加完成状态切换"
-4. **Cmd+L 优化代码**：
-   - "使用 TypeScript 严格类型"
-   - "添加样式美化"
-   - "优化性能"
-
-</v-clicks>
-
-</div>
-
-<v-click>
-
-<div class="mt-6 p-4 bg-yellow-50 rounded-lg">
-
-### ⏱️ 时间对比
-- **传统开发**：30-45 分钟
-- **使用 Cursor**：5-10 分钟
-
-</div>
-
-</v-click>
-
----
-
-# 演示 2：调试和修复错误
-
-## 场景：修复一个复杂的异步数据获取问题
-
-<div class="grid grid-cols-2 gap-8 mt-6">
-
-<div>
-
-### 问题代码
-```typescript
-// 有 bug 的代码
-const fetchUserData = async () => {
-  const response = fetch('/api/users')
-  const data = response.json()
-  setUsers(data.users)
-}
-```
-
-</div>
-
-<div>
-
-### Cursor 修复过程
-<v-clicks>
-
-1. **AI 识别问题**：缺少 await 关键字
-2. **建议修复**：添加错误处理
-3. **优化建议**：使用更好的错误处理模式
-4. **类型安全**：添加 TypeScript 类型
-
-</v-clicks>
-
-</div>
-
-</div>
-
-<v-click>
-
-### 修复后的代码
-```typescript
-const fetchUserData = async (): Promise<void> => {
-  try {
-    const response = await fetch('/api/users')
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`)
-    }
-    const data: { users: User[] } = await response.json()
-    setUsers(data.users)
-  } catch (error) {
-    console.error('Failed to fetch users:', error)
-    setError('Failed to load users')
-  }
-}
-```
-
-</v-click>
-
----
-
-# 演示 3：代码重构和优化
-
-## 场景：将类组件重构为函数组件 + Hooks
-
-<div class="mt-6">
-
-### 重构挑战
-- 复杂的状态管理
-- 生命周期方法转换
-- 性能优化
-- 类型定义更新
-
-</div>
-
-<v-click>
-
-<div class="mt-6">
-
-### Cursor 的解决方案
-1. **选中整个类组件**
-2. **Cmd+K**: "重构为函数组件，使用 React Hooks"
-3. **AI 自动处理**：
-   - `useState` 替换 `this.state`
-   - `useEffect` 替换生命周期方法
-   - `useCallback` 优化性能
-   - 更新 TypeScript 类型
-
-</div>
-
-</v-click>
-
-<v-click>
-
-<div class="mt-6 p-4 bg-purple-50 rounded-lg">
-
-### 🎯 结果
-- **代码行数减少** 40%
-- **性能提升** 明显
-- **类型安全** 增强
-- **可维护性** 大幅提升
-
-</div>
-
-</v-click>
-
----
-
-# 演示 4：AI 辅助学习新技术
-
-## 场景：学习并实现 React Query
-
-<div class="mt-6">
-
-### 学习过程
-
-<v-clicks>
-
-1. **Cmd+L 询问**："如何在 React 中使用 React Query？"
-2. **AI 解释概念**：缓存、同步、错误处理
-3. **生成示例代码**：完整的实现示例
-4. **最佳实践建议**：错误边界、加载状态等
-5. **实际应用**：在项目中集成
-
-</v-clicks>
-
-</div>
-
-<v-click>
-
-<div class="mt-6 grid grid-cols-2 gap-8">
-
-<div>
-
-### 传统学习方式
-- 📖 阅读文档
-- 🔍 搜索示例
-- 💻 手动编写代码
-- 🐛 调试错误
-- ⏰ 耗时 2-3 小时
-
-</div>
-
-<div>
-
-### Cursor 辅助学习
-- 💬 直接对话询问
-- 🤖 AI 解释概念
-- ⚡ 即时生成代码
-- 🔧 自动修复问题
-- ⏰ 耗时 20-30 分钟
-
-</div>
-
-</div>
-
-</v-click>
-
----
-
-# 高级技巧和最佳实践
-
-## 让 Cursor 发挥最大效能
-
-<div class="grid grid-cols-2 gap-8 mt-6">
-
-<div>
-
-### 🎯 使用技巧
-
-<v-clicks>
-
-- **明确的指令**：具体描述需求
-- **上下文提供**：选中相关代码
-- **迭代优化**：多轮对话完善
-- **代码审查**：让 AI 检查代码质量
-- **学习模式**：询问"为什么"和"如何"
-
-</v-clicks>
-
-</div>
-
-<div>
-
-### ⚠️ 注意事项
-
-<v-clicks>
-
-- **验证输出**：AI 生成的代码需要检查
-- **安全考虑**：敏感信息不要暴露
-- **版本控制**：及时提交代码变更
-- **测试覆盖**：确保功能正确性
-- **性能监控**：关注代码性能影响
-
-</v-clicks>
-
-</div>
-
-</div>
-
-<v-click>
-
-<div class="mt-8 p-4 bg-blue-50 rounded-lg">
-
-### 💡 专业建议
-Cursor 是工具，不是替代品。最好的效果来自于**人机协作**，而不是完全依赖 AI。
-
-</div>
-
-</v-click>
-
----
-
-# 效率提升数据
-
-## 真实的开发效率对比
-
-<div class="mt-8">
-
-<div class="grid grid-cols-3 gap-8">
-
-<div class="text-center">
-<div class="text-4xl font-bold text-green-600">3-5x</div>
-<div class="text-sm opacity-75">代码编写速度</div>
-</div>
-
-<div class="text-center">
-<div class="text-4xl font-bold text-blue-600">70%</div>
-<div class="text-sm opacity-75">调试时间减少</div>
-</div>
-
-<div class="text-center">
-<div class="text-4xl font-bold text-purple-600">80%</div>
-<div class="text-sm opacity-75">重复工作减少</div>
-</div>
-
-</div>
-
-</div>
-
-<v-click>
-
-<div class="mt-8">
-
-### 📊 具体场景提升
-
-| 开发任务 | 传统方式 | 使用 Cursor | 提升比例 |
-|---------|---------|------------|---------|
-| 创建 CRUD 接口 | 2 小时 | 30 分钟 | **4x** |
-| 编写单元测试 | 1.5 小时 | 20 分钟 | **4.5x** |
-| 代码重构 | 3 小时 | 45 分钟 | **4x** |
-| 学习新框架 | 1 天 | 2 小时 | **4x** |
-| 调试复杂问题 | 2 小时 | 30 分钟 | **4x** |
-
-</div>
-
-</v-click>
-
----
-
-# 团队协作和最佳实践
-
-## 在团队中推广 Cursor
-
-<div class="grid grid-cols-2 gap-8 mt-6">
-
-<div>
-
-### 🏢 团队采用策略
-
-<v-clicks>
-
-1. **试点项目**：选择小项目开始
-2. **培训分享**：组织内部培训
-3. **最佳实践**：建立使用规范
-4. **代码审查**：确保代码质量
-5. **效果评估**：量化提升效果
-
-</v-clicks>
-
-</div>
-
-<div>
-
-### 📋 团队规范建议
-
-<v-clicks>
-
-- **代码风格**：统一 AI 生成代码的风格
-- **安全规范**：敏感信息处理规则
-- **质量标准**：AI 代码的审查标准
-- **文档要求**：AI 生成代码的文档
-- **测试覆盖**：确保测试完整性
-
-</v-clicks>
-
-</div>
-
-</div>
-
-<v-click>
-
-<div class="mt-8 p-4 bg-orange-50 rounded-lg">
-
-### 🎯 成功关键
-团队成功采用 Cursor 的关键在于**渐进式引入**和**持续学习**，而不是一次性替换所有工具。
-
-</div>
-
-</v-click>
 
 ---
 
 # 未来展望
 
-## AI 编程的发展趋势
-
-<div class="mt-8">
+## AI 编程助手的发展趋势
 
 <v-clicks>
 
-- 🧠 **更智能的 AI**：GPT-5、Claude 等新模型
-- 🔗 **更好的集成**：与更多开发工具深度集成
-- 🎯 **专业化模型**：针对特定语言和框架优化
-- 🤝 **团队协作**：AI 辅助的团队开发
-- 🔒 **企业级功能**：更好的安全性和隐私保护
-- 📱 **移动开发**：移动端 AI 编程工具
-- 🌐 **云端协作**：基于云的 AI 开发环境
+### 🧠 技术发展方向
+- **更强大的模型**：GPT-5、Claude 下一代等新模型
+- **更好的推理能力**：复杂问题的分解和解决
+- **多模态集成**：代码、图像、声音的综合处理
 
+### 🔗 生态系统完善
+- **工具集成**：与更多开发工具的深度集成
+- **平台互操作**：跨平台、跨语言的无缝协作
+- **企业级功能**：更好的安全性和隐私保护
+
+### 🚀 应用场景扩展
+- **全栈开发**：从前端到后端的全面覆盂
+- **DevOps 自动化**：部署、监控、维护的自动化
+- **架构设计**：系统级设计和优化建议
+
+### 👥 协作模式进化
+- **人机协作**：更自然的人机交互方式
+- **团队协作**：AI 辅助的团队开发模式
+- **知识共享**：基于 AI 的知识管理和传承
+
+</v-clicks>
+
+---
+
+# 总结与建议
+
+<div class="grid grid-cols-2 gap-8 mt-8">
+
+<div>
+
+### ✅ 核心要点
+- **理解进化历程**：从 Chat 到 Agent 的发展脉络
+- **掌握工具使用**：Tab、Cmd K、Agent 各有所长
+- **建立最佳实践**：分步提交、规范使用、持续优化
+- **拥抱技术趋势**：跟上 AI 技术的快速发展
+
+<br>
+
+### 🎯 行动建议
+- **立即开始**：下载 Cursor，开始您的 AI 编程之旅
+- **持续学习**：关注官方文档和社区最佳实践
+- **分享交流**：与团队分享经验，共同提升效率
+
+</div>
+
+<div>
+
+### 💡 关键洞察
+<v-clicks>
+
+- **AI 不会取代程序员**，但会使用 AI 的程序员会取代不会使用 AI 的程序员
+- **工具只是手段**，关键在于如何高效地与 AI 协作
+- **保持批判思维**，AI 生成的代码需要仔细审查
+- **持续优化工作流**，找到最适合自己的使用模式
+
+</v-clicks>
+
+<br>
+
+<v-clicks>
+<div class="mt-6 p-4 bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg">
+
+
+### 🚀 未来已来
+我们正处在编程革命的起点，让我们一起拥抱这个 AI 驱动的新时代！
+
+</div>
 </v-clicks>
 
 </div>
 
-<v-click>
-
-<div class="mt-8 p-4 bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg">
-
-### 🚀 我们正处在编程革命的起点
-
-AI 不会取代程序员，但**会使用 AI 的程序员会取代不会使用 AI 的程序员**。
-
 </div>
-
-</v-click>
 
 ---
 layout: center
@@ -640,30 +669,30 @@ class: text-center
 
 # Q&A 环节
 
-## 有什么问题想要了解的吗？
+## 欢迎提问与讨论
 
 <div class="mt-8 text-6xl">🤔</div>
 
 <div class="mt-8 grid grid-cols-3 gap-8 text-sm">
 
 <div>
-**功能相关**
-- 具体使用技巧
-- 高级功能探索
-- 性能优化建议
-</div>
-
-<div>
-**实践相关**
-- 项目集成方案
-- 团队推广经验
+**使用相关**
+- Cursor 具体功能
 - 最佳实践分享
+- 常见问题解决
 </div>
 
 <div>
 **技术相关**
-- 与其他工具对比
-- 特定场景应用
+- Agent 工作原理
+- MCP 集成方案
+- 性能优化建议
+</div>
+
+<div>
+**应用相关**
+- 项目实施经验
+- 团队推广策略
 - 未来发展讨论
 </div>
 
@@ -674,25 +703,27 @@ layout: center
 class: text-center
 ---
 
-# 感谢观看！
+# 感谢聆听！
 
-## 开始你的 AI 编程之旅
+## 让我们一起拥抱 AI 编程的未来
 
 <div class="mt-8">
   <div class="text-4xl mb-4">🎉</div>
-  <div class="text-xl opacity-80 mb-8">希望这次演示对你有帮助</div>
+  <div class="text-xl opacity-80 mb-8">希望这次分享对您有所帮助</div>
 </div>
 
 <div class="flex justify-center gap-8 text-sm">
   <div>
     <div class="font-bold mb-2">🔗 相关链接</div>
     <div><a href="https://cursor.sh" target="_blank">Cursor 官网</a></div>
-    <div><a href="https://docs.cursor.sh" target="_blank">官方文档</a></div>
+    <div><a href="https://docs.cursor.com" target="_blank">官方文档</a></div>
+    <div><a href="https://github.com/getcursor" target="_blank">GitHub</a></div>
   </div>
   <div>
-    <div class="font-bold mb-2">📧 联系方式</div>
-    <div>邮箱：your-email@example.com</div>
-    <div>GitHub：@your-github</div>
+    <div class="font-bold mb-2">📚 参考资料</div>
+    <div>Cursor 官方文档</div>
+    <div>Cline 开源项目</div>
+    <div>AI 编程最佳实践</div>
   </div>
 </div>
 
