@@ -87,6 +87,41 @@ transition: fade-out
 
 ---
 
+# Vibe Coding 
+
+<div class="grid grid-cols-2 gap-8 mt-6">
+
+<div class="flex justify-center items-center">
+  <img 
+    src="https://i.miji.bid/2025/06/19/d55f122517447478a57ec3ee1b38318a.png" 
+    alt="Vibe Coding 含义" 
+    class="w-full max-h-96 object-contain rounded-lg shadow-lg"
+  />
+</div>
+
+<div class="p-4 bg-yellow-50 rounded-lg">
+
+### 🎨 Vibe Coding 是什么？
+Vibe Coding 是一种全新的编程方式，让你可以：
+- **自然语言描述**：用日常语言描述你想要的功能
+- **AI 自动实现**：AI 理解你的意图并生成代码
+- **即时反馈**：实时看到代码变化和效果
+- **迭代优化**：持续对话完善功能
+
+<br>
+
+### 🚀 核心优势
+- **降低门槛**：不需要记忆复杂的语法
+- **提高效率**：快速原型和迭代
+- **专注创意**：把精力放在功能设计而非语法细节
+- **学习友好**：通过对话学习编程概念
+
+</div>
+
+</div>
+
+---
+
 # Cursor 使用概览
 
 三种核心功能各有所长
